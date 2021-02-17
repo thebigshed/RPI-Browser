@@ -9,4 +9,10 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install git
 
-git clone
+git clone https://github.com/thebigshed/RPI-Browser.git
+
+chmod +x browser.sh
+
+./browser.sh
+
+Now you will have to wait........
