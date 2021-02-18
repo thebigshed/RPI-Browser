@@ -15,7 +15,7 @@ passwd
 sudo raspi-config nonint do_boot_behaviour B2
 
 # set splash screen off to speed up the boot
-sudo raspi-config nonint do_boot_splash 0
+sudo raspi-config nonint do_boot_splash 1
 
 # Interfacing Options: Enable SSH access if needed.
 sudo raspi-config nonint do_ssh 1
@@ -73,5 +73,6 @@ then
 
     done <<< "$matches_in_autostart"
 fi
+# not working at present....
 echo "[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --" >> ~/.bash_profile
 
