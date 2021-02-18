@@ -18,7 +18,7 @@ sudo raspi-config nonint do_boot_behaviour B2
 sudo raspi-config nonint do_boot_splash 1
 
 # Interfacing Options: Enable SSH access if needed.
-sudo raspi-config nonint do_ssh 1
+sudo raspi-config nonint do_ssh 0
 
 # Advanced Options: Disable “Overscan” if the Pi’s output does not fill your screen completely.
 sudo raspi-config nonint do_boot_behaviour B2
@@ -74,5 +74,5 @@ then
     done <<< "$matches_in_autostart"
 fi
 # not working at present....
-echo "[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --" >> ~/.bash_profile
+echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --' >> ~/.bash_profile
 
