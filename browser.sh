@@ -35,7 +35,7 @@ sudo apt-get install --no-install-recommends chromium-browser -y
 
 
 # insert/update hosts entry for the default site
-ip_address="192.168.101.33"
+ip_address="192.168.xxx.xxx"
 host_name="duet3"
 
 
