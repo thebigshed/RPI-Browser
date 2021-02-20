@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# Add logging to file
+
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>log.out 2>&1
+
 # raspi-config changes
 
 #ip address checking routine
@@ -105,7 +112,7 @@ then
     # iterate over the line numbers on which matches were found
     while read -r line_number; do
         # replace the text of each line with the desired host entry
-        sudo sed -e "${line_number}s/duet3/${dest_host_name}/" autostart.txt
+        sed -e "${line_number}s/duet3/${dest_host_name}/" autostart.txt
 
     done <<< "$matches_in_autostart"
 fi
