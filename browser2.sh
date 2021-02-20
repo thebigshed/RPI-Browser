@@ -97,9 +97,7 @@ else
     echo "$dest_host_entry" | sudo tee -a /etc/hosts > /dev/null
 fi
 
-sudo cp autostart.txt /etc/xdg/openbox/autostart
-
-matches_in_autostart="$(grep -n duet3 /etc/xdg/openbox/autostart | cut -f1 -d:)"
+matches_in_autostart="$(grep -n duet3 autostart.txt | cut -f1 -d:)"
 
 if [ ! -z "$matches_in_autostart" ]
 then
@@ -107,10 +105,13 @@ then
     # iterate over the line numbers on which matches were found
     while read -r line_number; do
         # replace the text of each line with the desired host entry
-        sudo sed -e "${line_number}s/duet3/${dest_host_name}/" /etc/xdg/openbox/autostart
+        sudo sed -e "${line_number}s/duet3/${dest_host_name}/" autostart.txt
 
     done <<< "$matches_in_autostart"
 fi
+
+sudo cp autostart.txt /etc/xdg/openbox/autostart
+
 # use the profile to do the auto start of the browser 
 echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --' >> ~/.bash_profile
 
