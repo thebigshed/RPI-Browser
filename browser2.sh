@@ -115,3 +115,8 @@ fi
 # use the profile to do the auto start of the browser 
 echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --' >> ~/.bash_profile
 
+# boot quiet to speed it all up
+sed -e '1s/$/ quiet/' /boot/cmdline.txt
+
+# reboot
+sudo reboot
