@@ -29,6 +29,28 @@ sudo raspi-config nonint do_expand_rootfs
 # Change User Password
 passwd
 
+# get a hostname for this device
+
+read -p "This Device Hostname :" this_hostname
+sudo raspi-config nonint do_hostname ${this_hostname}
+
+# set destination Hostname
+read -p "Destination Hostname :" dest_host_name
+
+# Get a valid ip address
+
+while :
+do
+  read -p "Destination IP Address :" ip_address
+  valid_ip $ip_address
+    if [ $? -eq 0 ]
+        then
+                echo "Address Valid"
+                break
+        else
+                echo "Invalid Address - Please Try Again"
+    fi
+done
 # Network Options: Configure WiFi as needed.
 
 # Boot Options: Select “Desktop / CLI” and then “Console Autologin”. We’ll come back to this later.
@@ -52,29 +74,6 @@ sudo apt-get upgrade -y
 sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox -y
 # and now the browser
 sudo apt-get install --no-install-recommends chromium-browser -y
-
-# get a hostname for this device
-
-read -p "This Device Hostname :" this_hostname
-sudo raspi-config nonint do_hostname ${this_hostname}
-
-# set destination Hostname
-read -p "Destination Hostname :" dest_host_name
-
-# Get a valid ip address
-
-while :
-do
-  read -p "Destination IP Address :" ip_address
-  valid_ip $ip_address
-    if [ $? -eq 0 ]
-        then
-                echo "Address Valid"
-                break
-        else
-                echo "Invalid Address - Please Try Again"
-    fi
-done
 
 # insert/update hosts entry for the default site
 
