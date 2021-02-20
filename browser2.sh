@@ -107,8 +107,7 @@ then
     # iterate over the line numbers on which matches were found
     while read -r line_number; do
         # replace the text of each line with the desired host entry
-        #sudo sed -i "${line_number}s/.*/'chromium-browser --disable-infobars --kiosk http://${host_name}' " /etc/xdg/openbox/autostart
-        sed -e "${line_number}s/duet3/${dest_host_name}/" /etc/xdg/openbox/autostart
+        sudo sed -e "${line_number}s/duet3/${dest_host_name}/" /etc/xdg/openbox/autostart
 
     done <<< "$matches_in_autostart"
 fi
