@@ -116,7 +116,9 @@ fi
 echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --' >> ~/.bash_profile
 
 # boot quiet to speed it all up
-sed -e '1s/$/ quiet/' /boot/cmdline.txt
+cp /boot/cmdline.txt /tmp/cmdline.txt
+sed -e '1s/$/ quiet/' /tmp/cmdline2.txt
+sudo cp /tmp/cmdline2.txt /boot/cmdline.txt
 
 # reboot
 sudo reboot
