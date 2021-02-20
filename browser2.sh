@@ -32,7 +32,7 @@ passwd
 # get a hostname for this device
 
 read -p "This Device Hostname :" this_hostname
-sudo raspi-config nonint do_hostname ${this_hostname}
+
 
 # set destination Hostname
 read -p "Destination Hostname :" dest_host_name
@@ -74,7 +74,7 @@ sudo apt-get upgrade -y
 sudo apt-get install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox -y
 # and now the browser
 sudo apt-get install --no-install-recommends chromium-browser -y
-
+sudo raspi-config nonint do_hostname ${this_hostname}
 # insert/update hosts entry for the default site
 
 # find existing instances in the host file and save the line numbers
