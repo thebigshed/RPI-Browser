@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Add logging to file
-exec 1>log.out 2>&1
-
 # raspi-config changes
 
 #ip address checking routine
