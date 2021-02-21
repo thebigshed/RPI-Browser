@@ -98,7 +98,7 @@ then
     done <<< "$matches_in_hosts"
 else
     echo "Adding new hosts entry."
-    echo "$dest_host_entry" | sudo tee -a /etc/hosts > /dev/null
+    echo "$host_entry" | sudo tee -a /etc/hosts > /dev/null
 fi
 
 cp autostart.txt /tmp/autostart.txt
@@ -112,7 +112,7 @@ then
     # iterate over the line numbers on which matches were found
     while read -r line_number; do
         # replace the text of each line with the desired host entry
-        sed -e "${line_number}s/duet3/${dest_host_name}/" /tmp/autostart.txt
+        sed -i "${line_number}s/duet3/${dest_host_name}/" /tmp/autostart.txt
 
     done <<< "$matches_in_autostart"
 fi
@@ -124,8 +124,8 @@ echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx --' >> ~/.bash_profile
 
 # boot quiet to speed it all up
 cp /boot/cmdline.txt /tmp/cmdline.txt
-sed -e '1s/$/ quiet/' /tmp/cmdline2.txt
-sudo cp /tmp/cmdline2.txt /boot/cmdline.txt
+sed -i '1s/$/ quiet/' /tmp/cmdline.txt
+sudo cp /tmp/cmdline.txt /boot/cmdline.txt
 
 # reboot
 sudo reboot
