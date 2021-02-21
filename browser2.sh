@@ -102,6 +102,7 @@ else
 fi
 
 cp autostart.txt /tmp/autostart.txt
+sudo chmod +rw  /tmp/autostart.txt
 
 matches_in_autostart="$(grep -n duet3 /tmp/autostart.txt | cut -f1 -d:)"
 
