@@ -52,6 +52,22 @@ do
                 echo "Invalid Address - Please Try Again"
     fi
 done
+
+# read in the port number
+read -p "Port number to commect to (80) :" port_number
+
+#set the protocol based on the port
+
+case $port_number in
+	443) protocol="https"
+	;;
+	*)   protocol="http"
+esac
+
+#debug lines to ensure it is captured
+echo $protocol
+echo $port_number
+
 # Network Options: Configure WiFi as needed.
 
 # Boot Options: Select “Desktop / CLI” and then “Console Autologin”. We’ll come back to this later.
@@ -110,6 +126,7 @@ then
     while read -r line_number; do
         # replace the text of each line with the desired host entry
         sed -i "${line_number}s/duet3/${dest_host_name}/" /tmp/autostart.txt
+        sed -i "$(line_number}s/http/${protocol}/" /tmp/autostart.txt
 
     done <<< "$matches_in_autostart"
 fi
