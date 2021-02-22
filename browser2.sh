@@ -125,7 +125,7 @@ then
     # iterate over the line numbers on which matches were found
     while read -r line_number; do
         # replace the text of each line with the desired host entry
-        sed -i "${line_number}s/duet3/${dest_host_name}/" /tmp/autostart.txt
+        sed -i "${line_number}s/duet3/${dest_host_name}:$port_number}/" /tmp/autostart.txt
         sed -i "$(line_number}s/http/${protocol}/" /tmp/autostart.txt
 
     done <<< "$matches_in_autostart"
