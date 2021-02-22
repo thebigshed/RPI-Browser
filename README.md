@@ -15,15 +15,15 @@ git clone https://github.com/thebigshed/RPI-Browser.git
 
 chmod +x browser.sh
 
-use your favorite editor to change IP_ADDRESS and HOSTNAME for the site you are going to connect too.
-Save your file and...
-
 ./browser.sh
 
-Now you will have to wait........
+the script will prompt you for (use your settings):
 
-once finished check for anything looking like an error then reboot
+A host name for this machine I called mine: Browser
+A host name for the device I am connecting to : Duet
+An IP address (assumed to be static) to connect to : 192.168.1.1
+A port on the device : 8080
 
-sudo reboot
+the script will then do the updates, installs and configuration of your box and then reboot and go directly to the site you specified.
 
-when the RPI restarts the browser will open in full kiosk mode and be directed to your website / selected destination.
+if you have issues then CRTL ALT with Backspace will kill the xserver and leave you at a command prompt.
